@@ -6,7 +6,7 @@ date=`date +%Y%m%d-%H%M`; datesek=`date +%S`
 ver=2.5.2
 
 show_usage() {
-  echo "srr.sh($ver): Streaming-radio dump script"
+  echo "srr.sh($ver): Streaming-radio rokuon script"
   echo '  -c <ch>         Record channel'
   echo '                   AFN AG NHK1 NHK2 NHKFM and radiko'
   echo "                   omitted: $SRR_OMCH"
