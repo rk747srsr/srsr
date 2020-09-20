@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 pid=$$
-srsr_tmpdir=/var/radio/spool
-srsr_vartmpdir=/var/radio
-srsr_outdir=$HOME/Music/radio
+srsr_tmpdir=/tmp
+srsr_vartmpdir=/var/tmp
+srsr_outdir=$HOME/Downloads
 rp=8  # for -U, retentionperiod
-nkf='nkf -m0 -Z1 --euc -Lu'
+nkf='nkf -m0 -Z1 -Lu'
 ver=1.0
 
 usage() {
