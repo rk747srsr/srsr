@@ -6,7 +6,7 @@ date=`date +%Y%m%d-%H%M`
 ver=2.4.2b
 
 show_usage() {
-  echo "srs.sh($ver): Streaming-radio play script"
+  echo "srs.sh($ver): Streaming-radio saisei script"
   echo '  -c <ch>     Channel'
   echo '               AFN AG NHK1 NHK2 NHKFM and radiko'
   echo '  -C <url>    Other channel'
