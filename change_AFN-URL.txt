@@ -1,0 +1,31 @@
+AFNのURLが変更された場合の対処方法
+
+
+必要なコマンド: tcpdump
+
+
+対処方法:
+
+1. Javaをtrueにしたブラウザで、AFN(http://www.afnpacific.net/AFN360.aspx)を表示
+
+2. su
+   rootパスワード入力
+   tcpdump -i en2(自分の環境のネットワークインターフェイス名を指定) -Xns 1000
+
+3. ブラウザに表示されている`Japan'の所にある`AFNP_TKO'
+   又は、自分が聴きたい局の`AFNP_xxx(アルファベット)'
+   をクリックして、聴こえてきたらブラウザを終了
+
+4. tcpdumpを`ctrl + C'で停止
+
+5. コンソール(macではTerminal)内を`.live.'で検索
+   `XXXXX(数字).live.streamtheworld.com'というURLがいくつもヒットするので、
+   `http://ヒットしたURLのXXXXX.live.streamtheworld.com/AFNP_xxxAAC'を、
+   ひとつずつmplayerで再生。音声が聴こえたらXXXXXの数字をメモ
+   ! AFN_xxxAACの`AAC'部分はAFN_TKOの場合。
+     他の局では文字列が違う可能性あり
+
+6. srr.sh、srs.shの
+   `AFN)
+    http="http://XXXXX.live.streamtheworld.com/AFNP_xxxAAC"'
+    の`XXXXX'部分を、5.でメモした数字へ変更
