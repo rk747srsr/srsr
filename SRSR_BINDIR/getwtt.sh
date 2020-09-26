@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 pid=$$
-[ -f $HOME/.srsr.conf ] && source $HOME/.srsr.conf || source /opt/radio/etc/srsr.conf
-ver=2.5.4
+[ -f $HOME/.srsr.conf ] && source $HOME/.srsr.conf || source /usr/local/etc/srsr.conf
+ver=2.5.5
 
 usage() {
   echo "getwtt.sh($ver): Timetable downloader"
@@ -437,7 +437,13 @@ case ${optarg_c} in
       fi
     # timetable heute woche
     else
-      tt=`curl -s $tturl | sed -n "/id=\"$optarg_c/,/<\/station>/p"`
+      if [ "$1" != '-d' -a -f $SRSR_VARTMPDIR/tt_${areaid}_past ]; then
+        # tt from tt_${areaid}_past
+        tt=`cat $SRSR_VARTMPDIR/tt_${areaid}_past | sed -n "/id=\"$optarg_c/,/<\/station>/p"`
+      else
+        # tt from radiko
+        tt=`curl -s $tturl | sed -n "/id=\"$optarg_c/,/<\/station>/p"`
+      fi
       # out range
       if [ ! "$tt" ]; then
         tt=`seq 1 47 | xargs -IAREAID curl -s ${tturl%JP*}JPAREAID | sed -n "/id=\"$optarg_c/,/<\/station>/p"`
